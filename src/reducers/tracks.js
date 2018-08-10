@@ -1,9 +1,12 @@
 import { handleActions } from "redux-actions";
-import { requestTracks, receiveTracks } from "../actions";
+import { requestTracks, receiveTracks } from "../actions/library";
+import {playNow} from '../actions/playback'
 
 const initialState = {
   loading: false,
-  themusic: []
+  themusic: [],
+  currentTrackUrl: "",
+  playing: false
 };
 
 const tracks = handleActions(
@@ -13,6 +16,10 @@ const tracks = handleActions(
       themusic: []
     }),
     [receiveTracks]: (state, action) => ({
+      loading: false,
+      themusic: action.payload
+    }),
+    [playNow]: (state, action) => ({
       loading: false,
       themusic: action.payload
     })

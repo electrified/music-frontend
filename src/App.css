@@ -31,3 +31,30 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.MusicList__trackRow {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.MusicList__trackRowItem {
+
+}
+
+.PlaybackControlButtons__button {
+  background-color: transparent;
+  border: black 1px;
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+}
+
+.PlaybackControls__container {
+  position:fixed;
+  bottom: 0;
+}
+
+.PlaybackControls {
+  display: flex;
+  justify-content: center;
+}

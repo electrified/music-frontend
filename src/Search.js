@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { searchTracks } from "./actions";
+import { searchTracks } from "./actions/library";
 
 class Search extends Component {
   constructor(props) {
