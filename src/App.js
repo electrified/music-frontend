@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import {BrowserRouter, Link} from 'react-router-dom'
+import {BrowserRouter, Link, Switch, Route} from 'react-router-dom'
 import logo from "./logo.svg";
 import "./App.css";
 import Search from "./Search";
+import Admin from "./Admin";
 import MusicList from "./MusicList";
 import PlaybackControls from "./PlaybackControls"
 
@@ -23,15 +24,17 @@ class App extends Component {
               <Link to="/songs">Songs</Link>
               Albums
               Artists
+              <Link to="/admin">Admin</Link>
             </div>
-            <div>
-              <Search />
-            </div>
+            <Search />
           </div>
         </header>
         <div className="App-intro" />
         <div>
-          <MusicList />
+            <Switch>
+              <Route exact path="/admin" component={Admin}/>
+              <Route path="/songs" component={MusicList}/>
+            </Switch>
         </div>
           <PlaybackControls />
       </div>
