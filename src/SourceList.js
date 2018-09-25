@@ -1,21 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSources, rescanSource, updateMetadata } from "./actions/admin";
-
+import AddSource from './AddSource'
 class SourceList extends Component {
     componentDidMount() {
         this.props.dispatch(getSources());
     }
 
-    handleSubmit(event) {
-        event.preventDefault();
-        this.props.dispatch(rescanSource(this.state.value));
-        console.log("hello");
-    }
+    // handleSubmit(event) {
+    //     event.preventDefault();
+    //     this.props.dispatch(rescanSource(this.state.value));
+    //     console.log("hello");
+    // }
 
     render() {
         return (
         <div>
+            <AddSource />
+
             {this.props.sources.map((source, i) => (
             <div key={i} className={"SourceList__sourceRow"}>
                 <div>{source.id}</div>

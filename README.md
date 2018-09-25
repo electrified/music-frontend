@@ -6,4 +6,4 @@ TODO
 Get and list sources
 Button to scan
 Button to reload metadata
-AudoFile List
+AudioFile List
