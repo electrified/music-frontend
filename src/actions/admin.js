@@ -58,7 +58,7 @@ export const getRescan = (id) => {
 };
 
 export const getMetadataUpdate = (id) => {
-  return makeRequest(`http://localhost:8080/admin/sources/${id}/meta`, requestRescan, receiveRescan, 'POST')
+  return makeRequest(`http://localhost:8080/admin/sources/${id}/metadata`, requestRescan, receiveRescan, 'POST')
 };
 
 export const addSource = (path) => {
