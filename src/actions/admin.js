@@ -1,5 +1,5 @@
 import { createActions } from "redux-actions";
-
+import config from "../config";
 export const { requestSources, receiveSources, requestRescan, receiveRescan, requestMetadataUpdate, receiveMetadataUpdate, requestAddSource, responseAddSource } = createActions(
   "REQUEST_SOURCES",
   "RECEIVE_SOURCES",
@@ -50,17 +50,17 @@ export const makeRequest = (url, requestFn, responseFn, method = 'GET', body) =>
 };
 
 export const getSources = () => {
-  return makeRequest('http://localhost:8080/admin/sources', requestSources, receiveSources)
+  return makeRequest(`${config.baseUrl}/admin/sources`, requestSources, receiveSources)
 };
 
 export const getRescan = (id) => {
-  return makeRequest(`http://localhost:8080/admin/sources/${id}/scan`, requestMetadataUpdate, receiveMetadataUpdate, 'POST')
+  return makeRequest(`${config.baseUrl}/admin/sources/${id}/scan`, requestMetadataUpdate, receiveMetadataUpdate, 'POST')
 };
 
 export const getMetadataUpdate = (id) => {
-  return makeRequest(`http://localhost:8080/admin/sources/${id}/metadata`, requestRescan, receiveRescan, 'POST')
+  return makeRequest(`${config.baseUrl}/admin/sources/${id}/metadata`, requestRescan, receiveRescan, 'POST')
 };
 
 export const addSource = (path) => {
-  return makeRequest('http://localhost:8080/admin/sources', requestAddSource, responseAddSource, 'POST', {'path': path})
+  return makeRequest(`${config.baseUrl}/admin/sources`, requestAddSource, responseAddSource, 'POST', {'path': path})
 };
