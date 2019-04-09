@@ -1,6 +1,13 @@
 import React, { Component } from "react";
+import { Link, Switch, Route} from 'react-router-dom'
 import { withAuth } from '@okta/okta-react';
+import "./App.css";
 import logo from "./logo.svg";
+import Search from "./Search";
+import Admin from "./Admin";
+import MusicList from "./MusicList";
+import Menu from "./Menu";
+import PlaybackControls from "./PlaybackControls"
 
 class Home extends Component {
     constructor(props) {
@@ -37,16 +44,25 @@ class Home extends Component {
     render() {
     const {authenticated} = this.state;
     let body = null;
+    let header = null;
     if (authenticated) {
-        body = (
+      console.log(this.props.auth.getUser());
+        header = (
           <div className="Buttons">
             <button onClick={this.logout}>Logout</button>
-            <p>
-            </p>
           </div>
         );
-      } else {
         body = (
+            <div>
+                <Switch>
+                    <Route exact path="/admin" component={Admin}/>
+                    <Route path="/songs" component={MusicList}/>
+                </Switch>
+                <PlaybackControls />
+            </div>
+        )
+      } else {
+        header = (
           <div className="Buttons">
             <button onClick={this.login}>Login</button>
           </div>
@@ -56,40 +72,14 @@ class Home extends Component {
         <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo"/>
-            <h1 className="App-title">Welcome to React</h1>
-            {body}
+            <h1 className="App-title">Splodgify</h1>
+            <Search />
+            {header}
           </header>
+          <Menu />
+          {body}
         </div>
       );
-    //   return (
-    //         <div className="App">
-    //           <header className="App-header-container">
-    //             <div className="App-header">
-    //               <div>
-    //                 <img src={logo} className="App-logo" alt="logo" />
-    //               </div>
-    //               <div>
-    //                 <h1 className="App-title">Splodgify</h1>
-    //               </div>
-    //               <div>
-    //                 <Link to="/songs">Songs</Link>
-    //                 Albums
-    //                 Artists
-    //                 <Link to="/admin">Admin</Link>
-    //               </div>
-    //               <Search />
-    //             </div>
-    //           </header>
-    //           <div className="App-intro" />
-    //           <div>
-    //               <Switch>
-    //                 <Route exact path="/admin" component={Admin}/>
-    //                 <Route path="/songs" component={MusicList}/>
-    //               </Switch>
-    //           </div>
-    //             <PlaybackControls />
-    //         </div>
-    //   );
     }
   }
   

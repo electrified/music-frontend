@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import {BrowserRouter, Link, Switch, Route} from 'react-router-dom'
 import { Security, ImplicitCallback } from '@okta/okta-react';
-import "./App.css";
-// import Search from "./Search";
-// import Admin from "./Admin";
-// import MusicList from "./MusicList";
-// import PlaybackControls from "./PlaybackControls"
 import Home from './Home'
 
 const config = {
@@ -19,7 +14,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Security {...config}>
-          <Route path="/" exact={true} component={Home}/>
+          <Route path="/" component={Home}/>
           <Route path="/implicit/callback" component={ImplicitCallback}/>
         </Security>
       </BrowserRouter>
