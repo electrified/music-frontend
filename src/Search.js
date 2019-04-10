@@ -19,7 +19,7 @@ class Search extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(searchTracks(this.state.value));
+    this.props.dispatch(searchTracks(this.state.value, this.props.auth));
     console.log("hello");
   }
 

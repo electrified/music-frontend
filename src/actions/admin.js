@@ -11,42 +11,44 @@ export const { requestSources, receiveSources, requestRescan, receiveRescan, req
   "RESPONSE_ADD_SOURCE"
   );
 
-export const makeRequest = (url, requestFn, responseFn, method = 'GET', body) => dispatch => {
+export const makeRequest = (url, requestFn, responseFn, method = 'GET', body, auth) => dispatch => {
   dispatch(requestFn());
-  let username = 'user';
-  let password = 'password';
+
+  auth.getAccessToken().then(token => {
+    console.log(token)
+    let headers = new Headers();
+    headers.set('Authorization', 'Bearer ' + token );
+    let requestOptions = {
+      method,
+      headers,
+    };
   
-  let headers = new Headers();
-  headers.set('Authorization', 'Basic ' + Buffer.from(username + ":" + password).toString('base64'));
-
-  let requestOptions = {
-    method,
-    headers: headers,
-  };
-
-  if (method === 'POST') {
-    requestOptions['body'] = JSON.stringify(body);
-    
-    headers.set('content-type', "application/json; charset=utf-8");
-  }
-
-  fetch(url, requestOptions)
-    .then(function(response) {
-      if (response.status !== 200) {
-        console.log(
-          "Looks like there was a problem. Status Code: " + response.status
-        );
-        return;
-      }
-
-      // Examine the text in the response
-      response.json().then(function(data) {
-        dispatch(responseFn(data));
+    if (method === 'POST') {
+      requestOptions['body'] = JSON.stringify(body);
+      
+      headers.set('content-type', "application/json; charset=utf-8");
+    }
+    for (var pair of headers.entries()) {
+      console.log(pair[0]+ ': '+ pair[1]);
+   }
+    fetch(url, requestOptions)
+      .then(function(response) {
+        if (response.status !== 200) {
+          console.log(
+            "Looks like there was a problem. Status Code: " + response.status
+          );
+          return;
+        }
+  
+        // Examine the text in the response
+        response.json().then(function(data) {
+          dispatch(responseFn(data));
+        });
+      })
+      .catch(function(err) {
+        console.log("Fetch Error :-S", err);
       });
-    })
-    .catch(function(err) {
-      console.log("Fetch Error :-S", err);
-    });
+  })
 };
 
 export const getSources = () => {

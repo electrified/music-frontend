@@ -73,7 +73,7 @@ class Home extends Component {
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo"/>
             <h1 className="App-title">Splodgify</h1>
-            <Search />
+            <Search auth={this.props.auth} />
             {header}
           </header>
           <Menu />

@@ -6,6 +6,6 @@ export const { requestTracks, receiveTracks } = createActions(
   "RECEIVE_TRACKS"
 );
 
-export const searchTracks = query => {
-  return makeRequest(`${config.baseUrl}/search?query=${query}`, requestTracks, receiveTracks)
+export const searchTracks = (query, auth) => {
+  return makeRequest(`${config.baseUrl}/playback/search?query=${query}`, requestTracks, receiveTracks, 'GET', null, auth)
 };
