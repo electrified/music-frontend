@@ -51,18 +51,18 @@ export const makeRequest = (url, requestFn, responseFn, method = 'GET', body, au
   })
 };
 
-export const getSources = () => {
-  return makeRequest(`${config.baseUrl}/admin/sources`, requestSources, receiveSources)
+export const getSources = (auth) => {
+  return makeRequest(`${config.baseUrl}/admin/sources`, requestSources, receiveSources,'GET', null, auth)
 };
 
-export const getRescan = (id) => {
-  return makeRequest(`${config.baseUrl}/admin/sources/${id}/scan`, requestMetadataUpdate, receiveMetadataUpdate, 'POST')
+export const getRescan = (id, auth) => {
+  return makeRequest(`${config.baseUrl}/admin/sources/${id}/scan`, requestMetadataUpdate, receiveMetadataUpdate, 'POST', null, auth)
 };
 
-export const getMetadataUpdate = (id) => {
-  return makeRequest(`${config.baseUrl}/admin/sources/${id}/metadata`, requestRescan, receiveRescan, 'POST')
+export const getMetadataUpdate = (id, auth) => {
+  return makeRequest(`${config.baseUrl}/admin/sources/${id}/metadata`, requestRescan, receiveRescan, 'POST', null, auth)
 };
 
-export const addSource = (path) => {
-  return makeRequest(`${config.baseUrl}/admin/sources`, requestAddSource, responseAddSource, 'POST', {'path': path})
+export const addSource = (path, auth) => {
+  return makeRequest(`${config.baseUrl}/admin/sources`, requestAddSource, responseAddSource, 'POST', {'path': path}, auth)
 };
