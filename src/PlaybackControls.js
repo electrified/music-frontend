@@ -1,21 +1,21 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PlaybackControlButtons from "./PlaybackControlButtons"
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import PlaybackControlButtons from './PlaybackControlButtons'
 
 class PlaybackControls extends Component {
-    render() {
-      return (
-        <div className="PlaybackControls__container">
-            <div className="PlaybackControls">
-                <PlaybackControlButtons />
-            </div>
-        </div>)
-    }
+  render() {
+    return (
+      <div className="PlaybackControls__container">
+        <div className="PlaybackControls">
+          <PlaybackControlButtons />
+        </div>
+      </div>
+    )
+  }
 }
 
-
 const mapStateToProps = (state, origProps) => {
-    return {};
-  };
+  return {}
+}
 
-export default connect(mapStateToProps)(PlaybackControls);
+export default connect(mapStateToProps)(PlaybackControls)

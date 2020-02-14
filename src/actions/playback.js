@@ -1,5 +1,3 @@
-import { createActions } from "redux-actions";
+import { createActions } from 'redux-actions'
 
-export const { playNow } = createActions(
-  "PLAY_NOW",
-);
+export const { playNow } = createActions('PLAY_NOW')

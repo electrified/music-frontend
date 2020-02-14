@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { searchTracks } from "./actions/library";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { searchTracks } from './actions/library'
 
 class Search extends Component {
   constructor(props) {
-    super(props);
-    this.state = { value: "" };
+    super(props)
+    this.state = { value: '' }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
-    console.log("before");
-    this.setState({ value: event.target.value });
-    console.log("after");
+    console.log('before')
+    this.setState({ value: event.target.value })
+    console.log('after')
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    this.props.dispatch(searchTracks(this.state.value, this.props.auth));
-    console.log("hello");
+    event.preventDefault()
+    this.props.dispatch(searchTracks(this.state.value, this.props.auth))
+    console.log('hello')
   }
 
   render() {
@@ -34,12 +34,12 @@ class Search extends Component {
         />
         <button>Search</button>
       </form>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state, origProps) => {
-  return {};
-};
+  return {}
+}
 
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps)(Search)

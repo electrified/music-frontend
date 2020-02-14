@@ -1,29 +1,28 @@
-import { handleActions } from "redux-actions";
-import { requestTracks, receiveTracks } from "../actions/library";
-import {playNow} from '../actions/playback'
+import { handleActions } from 'redux-actions'
+import { requestTracks, receiveTracks } from '../actions/library'
+import { playNow } from '../actions/playback'
 
 const initialState = {
   loading: false,
   themusic: [],
-  currentTrackUrl: "",
-  playing: false
-};
+  currentTrackUrl: '',
+  playing: false,
+}
 
-const tracks = handleActions(
+export default handleActions(
   {
     [requestTracks]: (state, action) => ({
       loading: true,
-      themusic: []
+      themusic: [],
     }),
     [receiveTracks]: (state, action) => ({
       loading: false,
-      themusic: action.payload
+      themusic: action.payload,
     }),
     [playNow]: (state, action) => ({
       loading: false,
-      themusic: action.payload
-    })
+      themusic: action.payload,
+    }),
   },
   initialState
-);
-export default tracks;
+)

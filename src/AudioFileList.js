@@ -1,24 +1,24 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 class AudioFileList extends Component {
-   render() {
+  render() {
     return (
       <div>
         {this.props.tracks.map((track, i) => (
-          <div key={i} className={"MusicList__trackRow"}>
+          <div key={i} className={'MusicList__trackRow'}>
             <div>{track.title}</div>
           </div>
         ))}
       </div>
-    );
+    )
   }
 }
 
 const mapStateToProps = ({ tracks }) => {
   return {
-    tracks: tracks.themusic
-  };
-};
+    tracks: tracks.themusic,
+  }
+}
 
-export default connect(mapStateToProps)(AudioFileList);
+export default connect(mapStateToProps)(AudioFileList)
