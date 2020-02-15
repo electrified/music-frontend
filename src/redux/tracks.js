@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import {makeRequest} from '../util'
+import { makeRequest } from '../util'
 import config from '../config'
 
 const { actions, reducer } = createSlice({
@@ -27,7 +27,7 @@ const { actions, reducer } = createSlice({
   },
 })
 
-export const searchTracks = (query) => {
+export const searchTracks = query => {
   return makeRequest(
     `${config.baseUrl}/playback/search?query=${query}`,
     actions.requestTracks,
@@ -37,6 +37,6 @@ export const searchTracks = (query) => {
   )
 }
 
-export const {playNow} = actions
+export const { playNow } = actions
 
 export default reducer

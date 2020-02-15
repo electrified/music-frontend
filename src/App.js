@@ -1,7 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
-import { Security, ImplicitCallback } from '@okta/okta-react'
+import { Security, SecureRoute, ImplicitCallback } from '@okta/okta-react'
 
 import AuthHandler from './AuthHandler'
 import store from './redux'
@@ -15,8 +15,8 @@ const config = {
 
 const App = () => (
   <div>
-    <Home />
     <AuthHandler />
+    <Home />
   </div>
 )
 
@@ -26,7 +26,7 @@ export default () => (
       <Security {...config}>
         <Switch>
           <Route path="/implicit/callback" component={ImplicitCallback} />
-          <Route path="/" component={App} />
+          <SecureRoute path="/" component={App} />
         </Switch>
       </Security>
     </Router>

@@ -4,8 +4,10 @@ import SourceList from './SourceList'
 import AudioFileList from './AudioFileList'
 
 export default () => {
-  return (<div>
-    <SourceList />
-    <AudioFileList />
-  </div>)
+  return (
+    <div>
+      <SourceList />
+      <AudioFileList />
+    </div>
+  )
 }

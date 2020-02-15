@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import {makeRequest} from '../util'
+import { makeRequest } from '../util'
 import config from '../config'
 
 const { actions, reducer } = createSlice({
@@ -55,7 +55,7 @@ export const getSources = () => {
   )
 }
 
-export const getRescan = (id) => {
+export const getRescan = id => {
   return makeRequest(
     `${config.baseUrl}/admin/sources/${id}/scan`,
     actions.requestMetadataUpdate,
@@ -64,7 +64,7 @@ export const getRescan = (id) => {
   )
 }
 
-export const getMetadataUpdate = (id) => {
+export const getMetadataUpdate = id => {
   return makeRequest(
     `${config.baseUrl}/admin/sources/${id}/metadata`,
     actions.requestRescan,
@@ -73,7 +73,7 @@ export const getMetadataUpdate = (id) => {
   )
 }
 
-export const addSource = (path) => {
+export const addSource = path => {
   return makeRequest(
     `${config.baseUrl}/admin/sources`,
     actions.requestAddSource,
