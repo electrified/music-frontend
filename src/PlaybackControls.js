@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import PlaybackControlButtons from './PlaybackControlButtons'
 
-class PlaybackControls extends Component {
-  render() {
+export default () => {
     return (
       <div className="PlaybackControls__container">
         <div className="PlaybackControls">
@@ -11,11 +9,4 @@ class PlaybackControls extends Component {
         </div>
       </div>
     )
-  }
 }
-
-const mapStateToProps = (state, origProps) => {
-  return {}
-}
-
-export default connect(mapStateToProps)(PlaybackControls)

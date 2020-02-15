@@ -1,26 +1,34 @@
-import React, { Component } from 'react'
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom'
+import React from 'react'
+import { Provider } from 'react-redux'
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import { Security, ImplicitCallback } from '@okta/okta-react'
 
+import AuthHandler from './AuthHandler'
+import store from './redux'
 import Home from './Home'
 
 const config = {
-  issuer: 'https://dev-181381.okta.com/oauth2/default',
+  issuer: `${process.env.REACT_APP_OKTA_ORG_URL}/oauth2/default`,
   redirect_uri: window.location.origin + '/implicit/callback',
-  client_id: '0oafqdryvHj2PBv09356',
+  client_id: process.env.REACT_APP_OKTA_CLIENT_ID,
 }
 
-class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Security {...config}>
-          <Route path="/" component={Home} />
+const App = () => (
+  <div>
+    <Home />
+    <AuthHandler />
+  </div>
+)
+
+export default () => (
+  <Provider store={store}>
+    <Router>
+      <Security {...config}>
+        <Switch>
           <Route path="/implicit/callback" component={ImplicitCallback} />
-        </Security>
-      </BrowserRouter>
-    )
-  }
-}
-
-export default App
+          <Route path="/" component={App} />
+        </Switch>
+      </Security>
+    </Router>
+  </Provider>
+)

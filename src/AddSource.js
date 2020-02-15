@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addSource } from './actions/admin'
+import { addSource } from './redux/admin'
 
 class AddSource extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class AddSource extends Component {
 
   handleSubmit(event) {
     event.preventDefault()
-    this.props.dispatch(addSource(this.state.value, this.props.auth))
+    this.props.dispatch(addSource(this.state.value))
     console.log('hello')
   }
 

@@ -1,24 +1,14 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
+import { useSelector} from 'react-redux'
 
-class AudioFileList extends Component {
-  render() {
-    return (
-      <div>
-        {this.props.tracks.map((track, i) => (
-          <div key={i} className={'MusicList__trackRow'}>
-            <div>{track.title}</div>
-          </div>
-        ))}
-      </div>
-    )
-  }
+export default () => {
+  const tracks = useSelector(state => state.tracks.themusic)
+
+  return (<div>
+      {tracks.map((track, i) => (
+        <div key={i} className={'MusicList__trackRow'}>
+          <div>{track.title}</div>
+        </div>
+      ))}
+    </div>)
 }
-
-const mapStateToProps = ({ tracks }) => {
-  return {
-    tracks: tracks.themusic,
-  }
-}
-
-export default connect(mapStateToProps)(AudioFileList)

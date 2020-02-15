@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withAuth } from '@okta/okta-react'
-import { getSources, getRescan, getMetadataUpdate } from './actions/admin'
+import { getSources, getRescan, getMetadataUpdate } from './redux/admin'
 import AddSource from './AddSource'
 class SourceList extends Component {
   constructor(props) {
@@ -12,28 +11,28 @@ class SourceList extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getSources(this.props.auth))
+    this.props.dispatch(getSources())
   }
 
   handleRescan(id, event) {
     event.preventDefault()
-    this.props.dispatch(getRescan(id, this.props.auth))
+    this.props.dispatch(getRescan(id))
   }
 
   handleLoadMetadata(id, event) {
     event.preventDefault()
-    this.props.dispatch(getMetadataUpdate(id, this.props.auth))
+    this.props.dispatch(getMetadataUpdate(id))
   }
 
   handleDelete(id, event) {
     event.preventDefault()
-    this.props.dispatch(getMetadataUpdate(id, this.props.auth))
+    this.props.dispatch(getMetadataUpdate(id))
   }
 
   render() {
     return (
       <div>
-        <AddSource auth={this.props.auth} />
+        <AddSource />
 
         {this.props.sources.map((source, i) => (
           <div key={i} className={'SourceList__sourceRow'}>
@@ -59,4 +58,4 @@ const mapStateToProps = (state, origProps) => {
   return { sources: state.admin.sources }
 }
 
-export default withAuth(connect(mapStateToProps)(SourceList))
+export default connect(mapStateToProps)(SourceList)
