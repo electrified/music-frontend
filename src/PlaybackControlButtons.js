@@ -1,43 +1,26 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Icon, Label, Menu, Table, Button } from 'semantic-ui-react'
+
+// const blob = new Blob([arrayBuffer], { type: "audio/wav" });
+// const url = window.URL.createObjectURL(blob);
+// audioElement.src = url;
+
+// window.URL.revokeObjectURL(url);
 
 class PlaybackControlButtons extends Component {
   render() {
     return (
       <div>
-        <button title="like-track" className="PlaybackControlButtons__button">
-          {' '}
-          <span role="img" aria-label="Like">
-            &#x1F499;
-          </span>{' '}
-        </button>
-        <button
-          title="skip-previous"
-          className="PlaybackControlButtons__button"
-        >
-          {' '}
-          &#x23EE;{' '}
-        </button>
-        <button title="pause" className="PlaybackControlButtons__button">
-          {' '}
-          &#x23F8;{' '}
-        </button>
-        <button title="play" className="PlaybackControlButtons__button">
-          {' '}
-          &#x23EF;{' '}
-        </button>
-        <button
-          title="skip-forwards"
-          className="PlaybackControlButtons__button"
-        >
-          &#x23ED;{' '}
-        </button>
-        <button title="repeat" className="PlaybackControlButtons__button">
-          {' '}
-          <span role="img" aria-label="Repeat">
-            &#x1F501;
-          </span>{' '}
-        </button>
+        <Button.Group>
+          <Button icon="heart" />
+          <Button icon="angle double left" />
+          <Button icon="pause" />
+          <Button icon="play" />
+          <Button icon="angle double right" />
+          <Button icon="repeat" />
+        </Button.Group>
+        <audio id="cheese"></audio>
       </div>
     )
   }

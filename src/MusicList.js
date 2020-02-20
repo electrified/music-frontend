@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { playNow } from './actions/playback'
+import { Icon, Label, Menu, Table, Button } from 'semantic-ui-react'
+
+import { playNow } from './redux/tracks'
 
 class MusicList extends Component {
   constructor(props) {
@@ -11,31 +13,69 @@ class MusicList extends Component {
   }
 
   handleChange(event) {
-    console.log('before')
     this.setState({ value: event.target.value })
-    console.log('after')
   }
 
   handleSubmit(event) {
-    event.preventDefault()
     this.props.dispatch(playNow(this.state.value))
-    console.log('hello')
   }
 
   render() {
     return (
       <div>
-        {this.props.tracks.map((track, i) => (
-          <div key={i} className={'MusicList__trackRow'}>
-            <div>{track.title}</div>
-            <div>{track.artist[0].name}</div>
-            <div>{track.release[0].name}</div>
-            <div>{track.year}</div>
-            <div>{track.comment}</div>
-            <div>{track.track}</div>
-            <div>{track.length}</div>
-          </div>
-        ))}
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Title</Table.HeaderCell>
+              <Table.HeaderCell>Artist</Table.HeaderCell>
+              <Table.HeaderCell>Album</Table.HeaderCell>
+              <Table.HeaderCell>Year</Table.HeaderCell>
+              <Table.HeaderCell>Comment</Table.HeaderCell>
+              <Table.HeaderCell>Track</Table.HeaderCell>
+              <Table.HeaderCell>Length</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {this.props.tracks &&
+              this.props.tracks.map((track, i) => (
+                <Table.Row key={i}>
+                  <Table.Cell>
+                    {' '}
+                    <Button
+                      circular
+                      icon="play"
+                      onClick={() => this.props.dispatch(playNow(track.id))}
+                    />
+                    {track.title}
+                  </Table.Cell>
+                  <Table.Cell>{track.artist[0].name}</Table.Cell>
+                  <Table.Cell>{track.release[0].name}</Table.Cell>
+                  <Table.Cell>{track.year}</Table.Cell>
+                  <Table.Cell>{track.comment}</Table.Cell>
+                  <Table.Cell>{track.track}</Table.Cell>
+                  <Table.Cell>{track.length}</Table.Cell>
+                </Table.Row>
+              ))}
+          </Table.Body>
+          <Table.Footer>
+            <Table.Row>
+              <Table.HeaderCell colSpan="3">
+                <Menu floated="right" pagination>
+                  <Menu.Item as="a" icon>
+                    <Icon name="chevron left" />
+                  </Menu.Item>
+                  <Menu.Item as="a">1</Menu.Item>
+                  <Menu.Item as="a">2</Menu.Item>
+                  <Menu.Item as="a">3</Menu.Item>
+                  <Menu.Item as="a">4</Menu.Item>
+                  <Menu.Item as="a" icon>
+                    <Icon name="chevron right" />
+                  </Menu.Item>
+                </Menu>
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
+        </Table>
       </div>
     )
   }

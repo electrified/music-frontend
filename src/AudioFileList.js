@@ -6,11 +6,12 @@ export default () => {
 
   return (
     <div>
-      {tracks.map((track, i) => (
-        <div key={i} className={'MusicList__trackRow'}>
-          <div>{track.title}</div>
-        </div>
-      ))}
+      {tracks &&
+        tracks.map((track, i) => (
+          <div key={i} className={'MusicList__trackRow'}>
+            <div>{track.title}</div>
+          </div>
+        ))}
     </div>
   )
 }

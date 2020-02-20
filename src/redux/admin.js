@@ -11,38 +11,31 @@ const { actions, reducer } = createSlice({
     audioFiles: [],
   },
   reducers: {
-    requestSources: (state, action) => ({
-      loading: true,
-      sources: [],
-    }),
-    responseSources: (state, action) => ({
-      loading: false,
-      sources: action.payload,
-    }),
-    requestRescan: (state, action) => ({
-      loading: true,
-      // sources: [],
-    }),
-    responseRescan: (state, action) => ({
-      loading: false,
-      // sources: action.payload,
-    }),
-    requestMetadataUpdate: (state, action) => ({
-      loading: true,
-      // sources: [],
-    }),
-    responseMetadataUpdate: (state, action) => ({
-      loading: false,
-      // sources: action.payload,
-    }),
-    requestAddSource: (state, action) => ({
-      loading: true,
-      // sources: [],
-    }),
-    responseAddSource: (state, action) => ({
-      loading: false,
-      // sources: action.payload,
-    }),
+    requestSources: (state, action) => {
+      state.loading = true
+    },
+    responseSources: (state, action) => {
+      state.loading = false
+      state.sources = action.payload
+    },
+    requestRescan: (state, action) => {
+      state.loading = true
+    },
+    responseRescan: (state, action) => {
+      state.loading = false
+    },
+    requestMetadataUpdate: (state, action) => {
+      state.loading = true
+    },
+    responseMetadataUpdate: (state, action) => {
+      state.loading = false
+    },
+    requestAddSource: (state, action) => {
+      state.loading = true
+    },
+    responseAddSource: (state, action) => {
+      state.loading = false
+    },
   },
 })
 
