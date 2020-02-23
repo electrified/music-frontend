@@ -9,7 +9,7 @@ const { actions, reducer } = createSlice({
     loading: false,
     themusic: [],
     artists: [],
-    currentTrackUrl: '',
+    currentTrackId: '',
     playing: false,
     audioBlob: null,
   },
@@ -37,6 +37,9 @@ const { actions, reducer } = createSlice({
       state.loading = false
       state.audioBlob = action.payload
     },
+    play: (state, action) => {
+      state.currentTrackId = action.payload
+    }
   },
 })
 

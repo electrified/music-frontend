@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Icon, Label, Menu, Table, Button } from 'semantic-ui-react'
+import { Icon, Menu, Table, Button } from 'semantic-ui-react'
 
 import { playNow } from './redux/tracks'
 
