@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getSources, getRescan, getMetadataUpdate } from './redux/admin'
+import { getSources, getRescan, getMetadataUpdate, deleteSource } from './redux/admin'
 import AddSource from './AddSource'
 class SourceList extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class SourceList extends Component {
 
   handleDelete(id, event) {
     event.preventDefault()
-    this.props.dispatch(getMetadataUpdate(id))
+    this.props.dispatch(deleteSource(id))
   }
 
   render() {

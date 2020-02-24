@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Icon, Menu, Table, Button } from 'semantic-ui-react'
 
-import { playNow } from './redux/tracks'
+import { play } from './redux/tracks'
 
 class MusicList extends Component {
   constructor(props) {
@@ -16,8 +16,10 @@ class MusicList extends Component {
     this.setState({ value: event.target.value })
   }
 
-  handleSubmit(event) {
-    this.props.dispatch(playNow(this.state.value))
+  handleSubmit(id, event) {
+    event.preventDefault()
+    console.log('hello')
+    this.props.dispatch(play(id))
   }
 
   render() {
@@ -44,7 +46,7 @@ class MusicList extends Component {
                     <Button
                       circular
                       icon="play"
-                      onClick={() => this.props.dispatch(playNow(track.id))}
+                      onClick={e => this.handleSubmit(track.id, e)}
                     />
                     {track.title}
                   </Table.Cell>

@@ -39,6 +39,7 @@ const { actions, reducer } = createSlice({
     },
     play: (state, action) => {
       state.currentTrackId = action.payload
+      state.currentTrackUrl = `${config.baseUrl}/audio/play/${action.payload}`
     }
   },
 })
@@ -109,6 +110,6 @@ export const makeBlobRequest = (url, requestFn, responseFn) => (
     })
 }
 
-export const { playNow } = actions
+export const { play } = actions
 
 export default reducer

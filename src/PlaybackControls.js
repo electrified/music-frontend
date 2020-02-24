@@ -30,7 +30,7 @@ class PlaybackControls extends React.Component {
               <Button icon="angle double right" />
               <Button icon="repeat" />
             </Button.Group>
-            <audio ref={this.myRef} controls src={`/playback/track/${this.props.currentTrackId}`} />
+            <audio ref={this.myRef} controls src={this.props.currentTrackUrl} />
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@ class PlaybackControls extends React.Component {
 
 const mapStateToProps = ({ tracks }) => {
   return {
-    currentTrackId: tracks.currentTrackId,
+    currentTrackUrl: tracks.currentTrackUrl,
   }
 }
 

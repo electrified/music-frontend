@@ -36,6 +36,12 @@ const { actions, reducer } = createSlice({
     responseAddSource: (state, action) => {
       state.loading = false
     },
+    requestDelete: (state, action) => {
+      state.loading = true
+    },
+    responseDelete: (state, action) => {
+      state.loading = false
+    },
   },
 })
 
@@ -73,6 +79,15 @@ export const addSource = path => {
     actions.responseAddSource,
     'POST',
     { path: path }
+  )
+}
+
+export const deleteSource = id => {
+  return makeRequest(
+    `${config.baseUrl}/admin/sources/${id}`,
+    actions.requestAddSource,
+    actions.responseAddSource,
+    'DELETE'
   )
 }
 
