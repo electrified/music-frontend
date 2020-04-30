@@ -15,14 +15,17 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2"
+    "semantic-ui-react": "^0.88.2",
+    "snyk": "^1.315.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "fix": "prettier --single-quote --no-semi --trailing-comma es5 --write \"{src,__{tests,mocks}__}/**/*.js\""
+    "fix": "prettier --single-quote --no-semi --trailing-comma es5 --write \"{src,__{tests,mocks}__}/**/*.js\"",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
@@ -38,5 +41,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "snyk": true
 }
