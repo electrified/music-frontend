@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
+import { Input } from 'semantic-ui-react'
+
 import { searchTracks } from './redux/tracks'
 
 class Search extends Component {
@@ -20,19 +23,21 @@ class Search extends Component {
   handleSubmit(event) {
     event.preventDefault()
     this.props.dispatch(searchTracks(this.state.value))
+    this.props.history.push('/songs')
     console.log('hello')
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
+      <form>
+        <Input
+          icon={{ name: 'search', circular: true, link: true, onClick: this.handleSubmit }}
+          placeholder='Search...'
           name="search"
           type="text"
           value={this.state.value}
           onChange={this.handleChange}
         />
-        <button>Search</button>
       </form>
     )
   }
@@ -42,4 +47,4 @@ const mapStateToProps = (state, origProps) => {
   return {}
 }
 
-export default connect(mapStateToProps)(Search)
+export default connect(mapStateToProps)(withRouter(Search))

@@ -22,14 +22,14 @@ class PlaybackControls extends React.Component {
       <div className="PlaybackControls__container">
         <div className="PlaybackControls">
           <div>
-            <Button.Group>
+            {/* <Button.Group>
               <Button icon="heart" />
               <Button icon="angle double left" />
               <Button icon="pause" />
               <Button icon="play" />
               <Button icon="angle double right" />
               <Button icon="repeat" />
-            </Button.Group>
+            </Button.Group> */}
             <audio ref={this.myRef} controls src={this.props.currentTrackUrl} />
           </div>
         </div>

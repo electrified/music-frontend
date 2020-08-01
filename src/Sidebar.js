@@ -1,23 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Menu, Container, Image } from 'semantic-ui-react'
 
 export default () => {
   return (
     <div className="sideMenu">
-      <ul>
-        <li>
+      <Menu vertical>
+        <Menu.Item>
           <Link to="/songs">Songs</Link>
-        </li>
-        <li>
+        </Menu.Item>
+        <Menu.Item>
           <Link to="/albums">Albums</Link>
-        </li>
-        <li>
+        </Menu.Item>
+        <Menu.Item>
           <Link to="/artists">Artists</Link>
-        </li>
-        <li>
+        </Menu.Item>
+        <Menu.Item>
           <Link to="/admin">Admin</Link>
-        </li>
-      </ul>
+        </Menu.Item>
+      </Menu>
     </div>
   )
 }

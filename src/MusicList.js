@@ -61,7 +61,7 @@ class MusicList extends Component {
           </Table.Body>
           <Table.Footer>
             <Table.Row>
-              <Table.HeaderCell colSpan="3">
+              <Table.HeaderCell colSpan="7">
                 <Menu floated="right" pagination>
                   <Menu.Item as="a" icon>
                     <Icon name="chevron left" />
