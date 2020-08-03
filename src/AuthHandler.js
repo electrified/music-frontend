@@ -2,15 +2,15 @@ import * as React from 'react'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
-import { withAuth } from '@okta/okta-react'
+import { withOktaAuth } from '@okta/okta-react'
 
 import { setAuth } from './redux/auth'
 
-const AuthHandler = ({ auth, location, token, authUser, setAuth }) => {
+const AuthHandler = ({ authService, authState, setAuth, token }) => {
   React.useEffect(() => {
-    auth.getIdToken().then((nextToken = null) => {
+    authService.getIdToken().then((nextToken = null) => {
       if (nextToken !== token) {
-        auth.getUser().then(user => {
+        authService.getUser().then(user => {
           setAuth({ token: nextToken, user })
         })
       }
@@ -18,11 +18,11 @@ const AuthHandler = ({ auth, location, token, authUser, setAuth }) => {
   })
 
   React.useEffect(() => {
-    if (location.pathname === '/login') auth.login('/')
-    if (location.pathname === '/logout') auth.logout('/')
-  }, [auth, location.pathname])
+    if (window.location.pathname === '/login') authService.login('/')
+    if (window.location.pathname === '/logout') authService.logout('/')
+  }, [authService, window.location.pathname])
 
-  return null
+  return <div>Testing</div>
 }
 
 const mapStateToProps = state => ({
@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = { setAuth }
 
 export default compose(
-  withAuth,
+  withOktaAuth,
   withRouter,
   connect(mapStateToProps, mapDispatchToProps)
 )(AuthHandler)
