@@ -29,7 +29,7 @@ class Search extends Component {
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <Input
           icon={{ name: 'search', circular: true, link: true, onClick: this.handleSubmit }}
           placeholder='Search...'

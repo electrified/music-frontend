@@ -48,10 +48,10 @@ class MusicList extends Component {
                       icon="play"
                       onClick={e => this.handleSubmit(track.id, e)}
                     />
-                    {track.title}
+                    {track.name}
                   </Table.Cell>
-                  <Table.Cell>{track.artist[0].name}</Table.Cell>
-                  <Table.Cell>{track.release[0].name}</Table.Cell>
+                  <Table.Cell>{track.artist.length && track.artist[0].name}</Table.Cell>
+                  <Table.Cell>{track.release.length && track.release[0].name}</Table.Cell>
                   <Table.Cell>{track.year}</Table.Cell>
                   <Table.Cell>{track.comment}</Table.Cell>
                   <Table.Cell>{track.track}</Table.Cell>
@@ -60,7 +60,7 @@ class MusicList extends Component {
               ))}
           </Table.Body>
           <Table.Footer>
-            <Table.Row>
+            {/* <Table.Row>
               <Table.HeaderCell colSpan="7">
                 <Menu floated="right" pagination>
                   <Menu.Item as="a" icon>
@@ -75,7 +75,7 @@ class MusicList extends Component {
                   </Menu.Item>
                 </Menu>
               </Table.HeaderCell>
-            </Table.Row>
+            </Table.Row> */}
           </Table.Footer>
         </Table>
       </div>
